@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.post('/charge', (req, res) => {
   const stripe = require("stripe")(process.env.KEY);
   const token = req.body.stripeToken;
-  const amount = req.body.amount * 100
+  const amount = req.body.amount * 100;
   const charge = stripe.charges.create({
     amount: amount ,
     currency: 'usd',
@@ -28,7 +28,7 @@ app.post('/charge', (req, res) => {
       <h1>Charge did not go through</h1>
       <p>Error Message : ${err}</p>
     `)
-  })
+  });
 });
 
 app.use((req, res, next) => {
